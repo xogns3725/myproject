@@ -30,7 +30,7 @@ def play_game():
             if num < 1 or num > 100:
                 print('유효한 범위 내의 숫자를 입력하세요')
                 continue
-        except ValueError as e:
+        except TypeError as e:
             print('정수를 입력하세요')
             continue
     
