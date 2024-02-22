@@ -4,15 +4,17 @@ def play_game():
     random_number = random.randint(1, 100)
     count = 0
 
-    try:
-        print("숫자를 입력하세요 : ")
-        num = int(input())
-        
-    except ValueError as e:
-        print('정수를 입력하세요')
-    else:
-        if num < 1 or num > 100:
-            print('유효한 범위 내의 숫자를 입력하세요')
+    while True:
+
+        try:
+            num = int(input("숫자를 입력하세요 : "))
+            if num < 1 or num > 100:
+                print('유효한 범위 내의 숫자를 입력하세요')
+                continue
+        except ValueError as e:
+            print('정수를 입력하세요')
+            continue
+        break
 
     while True:
         count += 1
@@ -24,14 +26,13 @@ def play_game():
             break
         
         try:
-            print("숫자를 입력하세요 : ")
-            num = int(input())
-        
-        except ValueError as e:
-            print('정수를 입력하세요')
-        else:
+            num = int(input("숫자를 입력하세요 : "))
             if num < 1 or num > 100:
                 print('유효한 범위 내의 숫자를 입력하세요')
+                continue
+        except ValueError as e:
+            print('정수를 입력하세요')
+            continue
     
     print('맞았습니다')
     print('시도 횟수 : ', count)
@@ -45,8 +46,7 @@ def main():
         if count > max_count:
             max_count = count
 
-        print('다시 도전하시겠습니까? (y/n)')
-        retry = input()
+        retry = input('다시 도전하시겠습니까? (y/n) ')
 
         if retry == 'n':
             print('게임을 종료합니다')
