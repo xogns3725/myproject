@@ -1,5 +1,6 @@
 import random
 
+
 def play_game():
     win_count = 0
     lose_count = 0
@@ -57,10 +58,11 @@ def play_game():
                 draw_count += 1
     return win_count, lose_count, draw_count
 
+
 def main():
-    result = [0,0,0]
+    result = [0, 0, 0]
     while True:
-        result = [x+y for x,y in zip(result, play_game())]
+        result = [x+y for x, y in zip(result, play_game())]
 
         retry = input('다시 도전하시겠습니까? (y/n) ')
 
@@ -70,6 +72,7 @@ def main():
             break
         elif retry == 'y':
             print('게임을 재시작합니다')
+
 
 if __name__ == "__main__":
     main()
