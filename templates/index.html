@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위 바위 보</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .modal-img {
+            width: 100%;
+            height: auto;
+        }
+
+        body {
+            margin-left: 7rem;
+            margin-right: 7rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="px-4 py-5 my-5 text-center">
+        <h1 class="display-5 fw-bold text-body-emphasis">가위 바위 보</h1>
+    </div>
+
+    <!-- Button trigger modal -->
+    <div class="text-center mb-5">
+        <button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            게임 시작
+        </button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">가위바위보</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col">
+                                <form action="{{ url_for('rsp_create') }}" method="POST">
+                                    <button type="submit" class="btn btn-link" onclick="sendChoice('rock')">
+                                        <img src="https://blog.kakaocdn.net/dn/HfURw/btqXKvOTNWK/gWTwPXEg9QzSV0ilOuwuak/img.png"
+                                            class="modal-img" name="rock" alt="rock">
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col">
+                                <form action="{{ url_for('rsp_create') }}" method="POST">
+                                    <button type="submit" class="btn btn-link" onclick="sendChoice('scissors')">
+                                        <img src="https://blog.kakaocdn.net/dn/pSJwo/btqXJV1lACE/nx5XrxkCLWXh9UsnoS8vbK/img.png"
+                                            class="modal-img" name="scissors" alt="scissors">
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col">
+                                <form action="{{ url_for('rsp_create') }}" method="POST">
+                                    <button type="submit" class="btn btn-link" onclick="sendChoice('paper')">
+                                        <img src="https://blog.kakaocdn.net/dn/bmjB2s/btqXHhp6kpG/TH14W4U612SxKo9uuR2sB0/img.png"
+                                            class="modal-img" name="paper" alt="paper">
+                                    </button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center py-4">
+        <div class="row justify-content-center">
+            <div class="col-3 text-light bg-primary rounded-pill border border-3">
+                <h3>승: 1</h3>
+            </div>
+            <div class="col-3 text-light bg-danger rounded-pill border border-3">
+                <h3>패: 2</h3>
+            </div>
+            <div class="col-3 text-light bg-secondary rounded-pill border border-3">
+                <h3>무승부: 3</h3>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">컴퓨터</th>
+                <th scope="col">사용자</th>
+                <th scope="col">결과</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>✌</td>
+                <td>✊</td>
+                <td>이겼다!</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>✊</td>
+                <td>✌</td>
+                <td>졌다!</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>🖐</td>
+                <td>🖐</td>
+                <td>비겼다!</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
