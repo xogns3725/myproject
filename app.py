@@ -33,7 +33,7 @@ def home():
     return render_template('index.html', data=rsp_result, win=total_win, lose=total_lose, draw=total_draw)
 
 
-@app.route('/', methods=['POST'])
+@app.route('/rsp_value', methods=['POST'])
 def rsp_value():
     # form으로 데이터 입력 받기
     rock_receive = request.form.get("rock")
@@ -92,6 +92,12 @@ def rsp_value():
 
     return redirect(url_for('home'))
 
+@app.route('/delete_rsp', methods=['POST'])
+def delete_rsp():
+    db.session.query(Rsp).delete()
+    db.session.commit()
+    
+    return redirect(url_for('home'))
 
 if __name__ == '__main__':
     app.run(debug=True)
