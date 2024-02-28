@@ -1,8 +1,5 @@
 import hashlib
 
-# ----- 코드 정의 ------
-
-
 class Member:
     def __init__(self, name, username, password):
         self.name = name
@@ -19,19 +16,14 @@ class Post:
     def __init__(self, title, content, author):
         self.title = title
         self.content = content
-        self.author = author.username
+        self.author = author
 
     def __str__(self):
         return f'게시글 제목: {self.title} 게시글 내용: {self.content}'
 
-
-class Main():
-    # ----- 코드 실행 ------
-    # 회원, 게시글 리스트 생성
+# 회원 생성
+def create_member(Member):
     members = []
-    posts = []
-
-    # 회원 입력
     while True:
         member = Member(*input('이름, 아이디, 비밀번호를 입력하시오: ').split())
         members.append(member)
@@ -40,21 +32,26 @@ class Main():
             continue
         elif mem_add == 'n':
             break
+    return members
 
-    # 게시글 작성
+# 게시글 작성
+def create_post(members):
+    posts = []
     for member in members:
         member.display()
 
         while True:
-            post = Post(*input('게시글 제목, 내용을 입력하시오: ').split(), author=member)
+            post = Post(*input('게시글 제목, 내용을 입력하시오: ').split(), author=member.username)
             posts.append(post)
             post_add = input('글을 더 작성하시겠습니까? (y/n): ').lower()
             if post_add == 'y':
                 continue
             elif post_add == 'n':
                 break
+    return posts
 
-    # 특정 검색
+# 특정 검색
+def search_post(posts):
     while True:
         choice = int(input('작성자 검색은 1, 특정 단어 검색은 2, 종료하시려면 3을 눌러주세요: '))
         if choice == 1:
@@ -69,3 +66,9 @@ class Main():
                     print(post)
         elif choice == 3:
             break
+        
+# 메인 함수 실행
+class Main():
+    members = create_member(Member)
+    posts = create_post(members)
+    search_post(posts)
