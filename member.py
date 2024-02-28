@@ -2,6 +2,7 @@ import hashlib
 
 # ----- 코드 정의 ------
 
+
 class Member:
     def __init__(self, name, username, password):
         self.name = name
@@ -22,6 +23,7 @@ class Post:
 
     def __str__(self):
         return f'게시글 제목: {self.title} 게시글 내용: {self.content}'
+
 
 class Main():
     # ----- 코드 실행 ------

@@ -10,7 +10,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] =\
 
 db = SQLAlchemy(app)
 
-
+# computer=컴퓨터의 선택, user=사용자의 선택, result=가위바위보 결과
 class Rsp(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     computer = db.Column(db.String(10), nullable=False)
@@ -47,6 +47,7 @@ def rsp_value():
     rsp_list = ['rock', 'scissors', 'paper']
     random_computer = random.choice(rsp_list)
 
+    # 가위,바위,보 연산
     if scissors_receive == "scissors":
         if random_computer == "scissors":
             user = "✌"
