@@ -1,29 +1,23 @@
 import random
 
-
+# 게임 규칙
 def play_game():
     win_count = 0
     lose_count = 0
     draw_count = 0
 
-    random_rsp = random.randint(1, 3)
-    if random_rsp == 1:
-        random_rsp = 'rock'
-    elif random_rsp == 2:
-        random_rsp = 'scissors'
-    elif random_rsp == 3:
-        random_rsp = 'paper'
+    rsp_list = ['rock', 'scissors', 'paper']
 
     while True:
+        random_rsp = random.choice(rsp_list)
         rsp = input("rock, scissors, paper : ").lower()
-        if rsp not in ['rock', 'scissors', 'paper']:
+        if rsp not in rsp_list:
             print('rock, scissors, paper를 입력하세요')
             continue
 
         if rsp == 'rock':
             if random_rsp == 'rock':
                 print('무승부!')
-                draw_count += 1
             elif random_rsp == 'scissors':
                 print('사용자 승!')
                 win_count += 1
@@ -39,7 +33,6 @@ def play_game():
                 break
             elif random_rsp == 'scissors':
                 print('무승부!')
-                draw_count += 1
             elif random_rsp == 'paper':
                 print('사용자 승!')
                 win_count += 1
@@ -55,10 +48,11 @@ def play_game():
                 break
             elif random_rsp == 'paper':
                 print('무승부!')
-                draw_count += 1
+        draw_count += 1
+
     return win_count, lose_count, draw_count
 
-
+# 게임 실행
 def main():
     result = [0, 0, 0]
     while True:
