@@ -43,45 +43,46 @@ def rsp_value():
     # 가위 바위 보 입력 받은 값으로 연산
     computer, user, result = 0, 0, 0
 
-    # 가위=1, 바위=2, 보=3
-    random_computer = random.randint(1, 3)
+    # 가위, 바위, 보 리스트
+    rsp_list = ['rock', 'scissors', 'paper']
+    random_computer = random.choice(rsp_list)
 
     if scissors_receive == "scissors":
-        if random_computer == 1:
+        if random_computer == "scissors":
             user = "✌"
             computer = "✌"
             result = "무승부"
-        elif random_computer == 2:
+        elif random_computer == "rock":
             user = "✌"
             computer = "✊"
             result = "패배ㅠㅠ"
-        elif random_computer == 3:
+        elif random_computer == "paper":
             user = "✌"
             computer = "🖐"
             result = "승리!!"
     elif rock_receive == "rock":
-        if random_computer == 1:
+        if random_computer == "scissors":
             user = "✊"
             computer = "✌"
             result = "승리!!"
-        elif random_computer == 2:
+        elif random_computer == "rock":
             user = "✊"
             computer = "✊"
             result = "무승부"
-        elif random_computer == 3:
+        elif random_computer == "paper":
             user = "✊"
             computer = "🖐"
             result = "패배ㅠㅠ"
     elif paper_receive == "paper":
-        if random_computer == 1:
+        if random_computer == "scissors":
             user = "🖐"
             computer = "✌"
             result = "패배ㅠㅠ"
-        elif random_computer == 2:
+        elif random_computer == "rock":
             user = "🖐"
             computer = "✊"
             result = "승리!!"
-        elif random_computer == 3:
+        elif random_computer == "paper":
             user = "🖐"
             computer = "🖐"
             result = "무승부"
